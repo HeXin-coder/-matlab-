@@ -1,0 +1,11 @@
+Image=im2double(imread('lena.jpg'));      %打开图像并将像素值归一化到[0,1]
+r=Image(:,:,1);                           %提取红色通道
+g=Image(:,:,2);                           %提取绿色通道
+b=Image(:,:,3);                           %提取蓝色通道
+Y=0.299*r+0.587*g+0.114*b;                %计算亮度值Y实现灰度化
+I=(r+g+b)/3;                              %计算亮度值I实现灰度化
+figure,imshow(Y),title('亮度图Y');
+figure,imshow(I),title('亮度图I');
+BW=zeros(size(Y));
+BW(Y>0.3)=1;                              %阈值为0.3，实现灰度图二值化
+figure,imshow(BW),title('二值图像');
